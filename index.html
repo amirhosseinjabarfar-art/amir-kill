@@ -1,10 +1,8 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>امیر کیل | مسابقات کالاف</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,11 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -24,2425 +21,1220 @@ html{
 }
 
 body{
-    font-family:"Vazirmatn",sans-serif;
-    background:#03030b;
+    font-family:'Vazirmatn',sans-serif;
+    background:#05050b;
     color:#fff;
-    min-height:100vh;
     overflow-x:hidden;
+    min-height:100vh;
 }
 
-/* ================= RGB BACKGROUND ================= */
+button,
+input{
+    font-family:inherit;
+}
 
-body::before{
-    content:"";
+button{
+    cursor:pointer;
+}
+
+/* BACKGROUND */
+.bg{
     position:fixed;
-    inset:-50%;
+    inset:0;
     z-index:-10;
-
+    overflow:hidden;
     background:
-        conic-gradient(
-            from 0deg,
-            #ff003c,
-            #ff00d4,
-            #7200ff,
-            #00b7ff,
-            #00ff95,
-            #ffe600,
-            #ff003c
-        );
-
-    filter:blur(120px);
-    opacity:.18;
-
-    animation:rotateBg 18s linear infinite;
-}
-
-@keyframes rotateBg{
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-.rgb-line{
-    position:fixed;
-    z-index:-4;
-    pointer-events:none;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #ff00dd,
-            #6200ff,
-            #00c8ff,
-            #00ff95,
-            #fff000,
-            #ff0055
-        );
-
-    background-size:500% 100%;
-
-    animation:rgbMove 5s linear infinite;
-}
-
-.rgb-line.top{
-    width:100%;
-    height:3px;
-    top:0;
-    left:0;
-}
-
-.rgb-line.bottom{
-    width:100%;
-    height:3px;
-    bottom:0;
-    left:0;
-}
-
-@keyframes rgbMove{
-
-    0%{
-        background-position:0% 50%;
-    }
-
-    100%{
-        background-position:500% 50%;
-    }
-
+        radial-gradient(circle at 20% 20%,rgba(255,0,85,.20),transparent 25%),
+        radial-gradient(circle at 80% 15%,rgba(0,255,255,.18),transparent 25%),
+        radial-gradient(circle at 50% 80%,rgba(140,0,255,.18),transparent 30%),
+        #05050b;
 }
 
 .grid{
-    position:fixed;
-    inset:0;
-    z-index:-8;
-
-    opacity:.12;
-
+    position:absolute;
+    inset:-50%;
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.13) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.13) 1px,
-            transparent 1px
-        );
-
-    background-size:45px 45px;
-
-    transform:
-        perspective(500px)
-        rotateX(55deg)
-        scale(1.7);
-
-    transform-origin:center bottom;
-
-    animation:gridMove 7s linear infinite;
+        linear-gradient(rgba(0,255,255,.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,140,.07) 1px,transparent 1px);
+    background-size:55px 55px;
+    transform:perspective(600px) rotateX(55deg);
+    animation:gridMove 12s linear infinite;
 }
 
 @keyframes gridMove{
-
-    from{
-        background-position:0 0;
-    }
-
-    to{
-        background-position:0 45px;
-    }
-
+    from{transform:perspective(600px) rotateX(55deg) translateY(0);}
+    to{transform:perspective(600px) rotateX(55deg) translateY(55px);}
 }
-
-/* ================= ORBS ================= */
 
 .orb{
-    position:fixed;
+    position:absolute;
     border-radius:50%;
-    pointer-events:none;
-    filter:blur(4px);
-    opacity:.35;
-    z-index:-5;
+    filter:blur(8px);
+    animation:orbMove 8s ease-in-out infinite alternate;
 }
 
-.orb.one{
+.orb1{
     width:250px;
     height:250px;
-    background:#ff0059;
-    top:10%;
-    left:-100px;
-
-    animation:
-        orbOne
-        8s
-        ease-in-out
-        infinite
-        alternate;
+    background:#ff005d;
+    top:5%;
+    left:-80px;
+    opacity:.28;
 }
 
-.orb.two{
+.orb2{
     width:300px;
     height:300px;
-    background:#5d00ff;
-    right:-130px;
-    top:35%;
-
-    animation:
-        orbTwo
-        10s
-        ease-in-out
-        infinite
-        alternate;
+    background:#00eaff;
+    right:-100px;
+    top:30%;
+    opacity:.20;
+    animation-delay:2s;
 }
 
-.orb.three{
-    width:230px;
-    height:230px;
-    background:#00d9ff;
-    left:30%;
-    bottom:-100px;
-
-    animation:
-        orbThree
-        9s
-        ease-in-out
-        infinite
-        alternate;
+.orb3{
+    width:240px;
+    height:240px;
+    background:#8c00ff;
+    bottom:0;
+    left:35%;
+    opacity:.22;
+    animation-delay:4s;
 }
 
-@keyframes orbOne{
-
-    to{
-        transform:
-            translate(180px,150px)
-            scale(1.3);
-    }
-
-}
-
-@keyframes orbTwo{
-
-    to{
-        transform:
-            translate(-180px,-100px)
-            scale(1.4);
-    }
-
-}
-
-@keyframes orbThree{
-
-    to{
-        transform:
-            translate(100px,-130px)
-            scale(1.2);
-    }
-
-}
-
-/* ================= PARTICLES ================= */
-
-.particles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-2;
-    overflow:hidden;
+@keyframes orbMove{
+    from{transform:translate(0,0) scale(1);}
+    to{transform:translate(70px,-50px) scale(1.25);}
 }
 
 .particle{
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
+    position:fixed;
+    width:4px;
+    height:4px;
     border-radius:50%;
-
     background:#fff;
-
     box-shadow:
         0 0 8px #fff,
-        0 0 15px #00eaff;
-
-    animation:
-        particleMove
-        linear
-        infinite;
+        0 0 18px #00eaff;
+    opacity:.7;
+    pointer-events:none;
+    z-index:-1;
+    animation:particleFloat linear infinite;
 }
 
-@keyframes particleMove{
-
+@keyframes particleFloat{
     from{
-        transform:
-            translateY(110vh)
-            scale(.4);
-
+        transform:translateY(110vh) translateX(0);
         opacity:0;
     }
-
-    15%{
-        opacity:1;
-    }
-
-    85%{
-        opacity:1;
-    }
-
+    10%{opacity:.8;}
+    90%{opacity:.8;}
     to{
-        transform:
-            translateY(-20vh)
-            scale(1.4);
-
+        transform:translateY(-10vh) translateX(100px);
         opacity:0;
     }
-
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 header{
     position:sticky;
     top:0;
-    z-index:1000;
-
-    width:100%;
-
-    padding:15px 5%;
-
-    background:
-        rgba(3,3,11,.76);
-
-    backdrop-filter:blur(18px);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.1);
+    z-index:100;
+    padding:15px;
+    backdrop-filter:blur(20px);
+    background:rgba(5,5,11,.70);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .nav{
     max-width:1250px;
     margin:auto;
-
     display:flex;
-
-    justify-content:space-between;
     align-items:center;
-
-    gap:20px;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-    font-size:27px;
+    font-size:25px;
     font-weight:900;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff004c,
-            #ff00d9,
-            #7200ff,
-            #00c8ff,
-            #00ff9d,
-            #fff000,
-            #ff004c
-        );
-
-    background-size:400%;
-
+    background:linear-gradient(90deg,#ff006a,#00eaff,#7b00ff,#ff006a);
+    background-size:300%;
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
-
-    animation:
-        rgbText
-        4s
-        linear
-        infinite;
+    animation:logoRGB 4s linear infinite;
 }
 
-@keyframes rgbText{
-
-    to{
-        background-position:400%;
-    }
-
+@keyframes logoRGB{
+    to{background-position:300% center;}
 }
 
-.nav-buttons{
+.nav-links{
     display:flex;
-    gap:10px;
+    gap:8px;
     flex-wrap:wrap;
+    justify-content:center;
 }
 
-.nav-btn{
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    background:
-        rgba(255,255,255,.05);
-
+.nav-links button{
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
     color:#fff;
-
-    padding:10px 18px;
-
-    border-radius:13px;
-
-    font-family:inherit;
-    font-size:14px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    padding:9px 14px;
+    border-radius:12px;
+    transition:.25s;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,0,90,.3),
-            rgba(102,0,255,.3),
-            rgba(0,204,255,.3)
-        );
-
-    border-color:#00d9ff;
-
-    box-shadow:
-        0 0 15px
-        rgba(0,217,255,.35),
-
-        inset 0 0 15px
-        rgba(255,0,170,.1);
-
-    transform:
-        translateY(-2px);
+.nav-links button:hover{
+    transform:translateY(-3px);
+    border-color:#00eaff;
+    box-shadow:0 0 20px rgba(0,234,255,.25);
 }
 
-/* ================= PAGES ================= */
-
+/* PAGES */
 .page{
     display:none;
-
-    min-height:
-        calc(100vh - 80px);
-
-    animation:
-        pageIn
-        .55s
-        ease;
+    min-height:calc(100vh - 80px);
+    padding:40px 15px 70px;
 }
 
 .page.active{
     display:block;
+    animation:pageIn .5s ease;
 }
 
 @keyframes pageIn{
-
     from{
         opacity:0;
-        transform:
-            translateY(25px)
-            scale(.98);
+        transform:translateY(20px) scale(.98);
     }
-
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
-
 }
 
 .container{
-    width:min(1200px,92%);
+    max-width:1250px;
     margin:auto;
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-    min-height:
-        calc(100vh - 80px);
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
     text-align:center;
-
-    padding:70px 0;
-
-    position:relative;
-}
-
-.hero-content{
-    width:100%;
-}
-
-.badge{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:
-        9px
-        17px;
-
-    border-radius:100px;
-
-    border:
-        1px solid
-        rgba(0,229,255,.4);
-
-    background:
-        rgba(0,229,255,.07);
-
-    color:#6fefff;
-
-    font-size:14px;
-
-    margin-bottom:22px;
-
-    box-shadow:
-        0 0 25px
-        rgba(0,229,255,.13);
-
-    animation:
-        badgeFloat
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-.badge-dot{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#00ff9d;
-
-    box-shadow:
-        0 0 12px
-        #00ff9d;
-
-    animation:
-        pulse
-        1s
-        infinite;
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.7);
-        opacity:.4;
-    }
-
-}
-
-@keyframes badgeFloat{
-
-    50%{
-        transform:
-            translateY(-5px);
-    }
-
+    padding:65px 10px 40px;
 }
 
 .hero h1{
-
-    font-size:
-        clamp(
-            65px,
-            13vw,
-            160px
-        );
-
-    line-height:.95;
-
+    font-size:clamp(45px,9vw,100px);
     font-weight:900;
-
-    letter-spacing:-5px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #ff00d4,
-            #7200ff,
-            #00d9ff,
-            #00ff9d,
-            #ffe600,
-            #ff0055
-        );
-
-    background-size:500% 100%;
-
+    line-height:1;
+    background:linear-gradient(
+        90deg,
+        #ff005d,
+        #ffea00,
+        #00ff9d,
+        #00eaff,
+        #8b00ff,
+        #ff005d
+    );
+    background-size:500%;
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
-
-    animation:
-        rgbText
-        4s
-        linear
-        infinite,
-
-        heroFloat
-        3s
-        ease-in-out
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 30px
-            rgba(255,0,200,.35)
-        );
+    animation:heroRGB 5s linear infinite;
+    text-shadow:0 0 35px rgba(0,234,255,.15);
 }
 
-@keyframes heroFloat{
-
-    50%{
-        transform:
-            translateY(-12px)
-            scale(1.015);
-    }
-
+@keyframes heroRGB{
+    to{background-position:500% center;}
 }
 
-.hero-sub{
-
-    margin-top:25px;
-
-    font-size:
-        clamp(
-            20px,
-            4vw,
-            34px
-        );
-
-    font-weight:800;
-
-    color:#fff;
-
-    text-shadow:
-        0 0 10px #ff00c8,
-        0 0 30px #5d00ff;
+.hero p{
+    margin-top:18px;
+    font-size:clamp(18px,3vw,27px);
+    color:#d8d8e5;
+    animation:floatText 3s ease-in-out infinite alternate;
 }
 
-.hero-desc{
-
-    max-width:650px;
-
-    margin:
-        20px
-        auto
-        35px;
-
-    color:#bbb;
-
-    line-height:2;
-
-    font-size:16px;
+@keyframes floatText{
+    to{transform:translateY(-7px);}
 }
 
-.main-button{
-
-    border:0;
-
-    position:relative;
-
-    overflow:hidden;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-weight:800;
-
-    font-size:17px;
-
-    padding:
-        16px
-        34px;
-
-    border-radius:17px;
-
-    cursor:pointer;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #7b00ff,
-            #00bfff,
-            #00e88a,
-            #ffdd00,
-            #ff0055
-        );
-
-    background-size:400%;
-
-    animation:
-        rgbButton
-        4s
-        linear
-        infinite;
-
+.hero-line{
+    width:min(500px,90%);
+    height:4px;
+    margin:28px auto;
+    border-radius:100px;
+    background:linear-gradient(90deg,#ff006a,#00eaff,#8b00ff);
     box-shadow:
-        0 0 25px
-        rgba(255,0,170,.4),
-
-        0 0 60px
-        rgba(0,180,255,.15);
-
-    transition:.3s;
+        0 0 10px #ff006a,
+        0 0 20px #00eaff;
+    animation:linePulse 2s infinite alternate;
 }
 
-.main-button:hover{
-
-    transform:
-        scale(1.06)
-        translateY(-3px);
-
-    box-shadow:
-        0 0 40px
-        rgba(255,0,170,.65),
-
-        0 0 80px
-        rgba(0,180,255,.35);
+@keyframes linePulse{
+    from{transform:scaleX(.7);}
+    to{transform:scaleX(1);}
 }
 
-@keyframes rgbButton{
-
-    to{
-        background-position:400%;
-    }
-
-}
-
-.main-button::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:80px;
-    height:200%;
-
-    top:-50%;
-    right:-100px;
-
-    background:
-        rgba(255,255,255,.35);
-
-    transform:rotate(20deg);
-
-    animation:
-        shine
-        2.7s
-        infinite;
-}
-
-@keyframes shine{
-
-    to{
-        right:130%;
-    }
-
-}
-
-/* ================= MATCH ================= */
-
-.match-section{
-    padding:
-        30px
-        0
-        100px;
-}
-
+/* SECTION TITLE */
 .section-title{
     text-align:center;
-
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:35px;
+    font-size:32px;
     font-weight:900;
+    margin:30px 0;
 }
 
-.section-title p{
-    color:#888;
-    margin-top:8px;
+.section-title span{
+    background:linear-gradient(90deg,#00eaff,#ff00a8,#ffe600);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+/* MATCH GRID */
+.matches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
 }
 
 .match-card{
-
-    max-width:650px;
-
-    margin:auto;
-
-    padding:30px;
-
-    border-radius:28px;
-
     position:relative;
-
     overflow:hidden;
-
-    background:
-        rgba(12,12,28,.76);
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-
-    box-shadow:
-        0 0 35px
-        rgba(100,0,255,.18),
-
-        inset 0 0 35px
-        rgba(255,0,130,.03);
-
-    transition:.4s;
+    padding:25px;
+    min-height:310px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.13);
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.09),
+        rgba(255,255,255,.025)
+    );
+    backdrop-filter:blur(18px);
+    transition:.35s;
+    animation:cardFloat 4s ease-in-out infinite alternate;
 }
 
-.match-card:hover{
+.match-card:nth-child(2){animation-delay:.4s;}
+.match-card:nth-child(3){animation-delay:.8s;}
+.match-card:nth-child(4){animation-delay:1.2s;}
+.match-card:nth-child(5){animation-delay:1.6s;}
 
-    transform:
-        translateY(-8px)
-        scale(1.015);
-
-    border-color:
-        rgba(0,220,255,.6);
-
-    box-shadow:
-        0 0 45px
-        rgba(0,210,255,.25),
-
-        0 0 90px
-        rgba(255,0,200,.1);
+@keyframes cardFloat{
+    to{transform:translateY(-8px);}
 }
 
 .match-card::before{
-
     content:"";
-
     position:absolute;
-
-    width:300px;
-    height:300px;
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            45deg,
-            #ff0055,
-            #7200ff,
-            #00d9ff
-        );
-
-    filter:blur(80px);
-
-    opacity:.12;
-
-    top:-180px;
-    left:-100px;
-
-    animation:
-        cardGlow
-        5s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-@keyframes cardGlow{
-
-    to{
-        transform:
-            translate(450px,300px)
-            scale(1.3);
-    }
-
-}
-
-.match-top{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:28px;
-}
-
-.match-name{
-
-    font-size:28px;
-    font-weight:900;
-}
-
-.multi{
-
-    padding:
-        7px
-        13px;
-
-    border-radius:100px;
-
-    color:#00ff9d;
-
-    border:
-        1px solid
-        rgba(0,255,157,.4);
-
-    background:
-        rgba(0,255,157,.08);
-
-    font-size:13px;
-
-    white-space:nowrap;
-}
-
-.card-info{
-
-    position:relative;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:15px;
-}
-
-.info-box{
-
-    padding:18px;
-
-    border-radius:17px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    text-align:center;
-}
-
-.info-label{
-
-    color:#888;
-
-    font-size:13px;
-
-    margin-bottom:7px;
-}
-
-.info-value{
-
-    font-size:21px;
-
-    font-weight:900;
-}
-
-.price{
-
-    color:#00ff9d;
-
-    text-shadow:
-        0 0 15px
-        rgba(0,255,157,.5);
-}
-
-.card-button{
-
-    width:100%;
-
-    margin-top:22px;
-
-    padding:15px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:#fff;
-
-    border-radius:15px;
-
-    font-family:inherit;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.card-button:hover{
-
-    background:
-        rgba(0,217,255,.12);
-
-    border-color:#00d9ff;
-
-    box-shadow:
-        0 0 25px
-        rgba(0,217,255,.2);
-}
-
-/* ================= ROOM ================= */
-
-.room-header{
-
-    text-align:center;
-
-    padding:
-        65px
-        0
-        40px;
-}
-
-.room-header h1{
-
-    font-size:
-        clamp(
-            40px,
-            7vw,
-            75px
-        );
-
-    font-weight:900;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #ff00dd,
-            #6500ff,
-            #00cfff,
-            #00ff9d
-        );
-
-    background-size:400%;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        rgbText
-        4s
-        linear
-        infinite;
-}
-
-.room-header p{
-
-    color:#aaa;
-
-    margin-top:12px;
-}
-
-.room-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:20px;
-
-    margin-bottom:30px;
-}
-
-.detail-card{
-
-    padding:25px;
-
-    border-radius:23px;
-
-    background:
-        rgba(12,12,28,.7);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.35s;
-}
-
-.detail-card:hover{
-
-    transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(255,0,190,.45);
-
-    box-shadow:
-        0 0 30px
-        rgba(255,0,190,.12);
-}
-
-.detail-card h3{
-
-    font-size:20px;
-
-    margin-bottom:18px;
-}
-
-.detail-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:12px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-}
-
-.detail-row:last-child{
-    border-bottom:0;
-}
-
-.detail-row span:first-child{
-    color:#888;
-}
-
-.detail-row span:last-child{
-
-    font-weight:700;
-
-    text-align:left;
-}
-
-/* ================= COUNTDOWN ================= */
-
-.countdown-card{
-
-    text-align:center;
-
-    margin-bottom:30px;
-}
-
-.countdown{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:12px;
-
-    margin-top:20px;
-}
-
-.time-box{
-
-    padding:
-        18px
-        10px;
-
-    border-radius:18px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border:
-        1px solid
-        rgba(0,217,255,.15);
-}
-
-.time-number{
-
-    font-size:32px;
-
-    font-weight:900;
-
-    color:#00eaff;
-
-    text-shadow:
-        0 0 15px
-        rgba(0,234,255,.6);
-}
-
-.time-label{
-
-    font-size:12px;
-
-    color:#777;
-
-    margin-top:5px;
-}
-
-/* ================= RULES ================= */
-
-.rules-card{
-
-    margin-bottom:50px;
-
-    padding:30px;
-
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,0,85,.055),
-            rgba(90,0,255,.055),
-            rgba(0,217,255,.055)
-        ),
-        rgba(10,10,23,.86);
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 40px
-        rgba(100,0,255,.12),
-
-        inset 0 0 40px
-        rgba(255,0,170,.025);
-}
-
-.rules-title{
-
-    text-align:center;
-
-    font-size:27px;
-
-    font-weight:900;
-
-    margin-bottom:25px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #ff00d9,
-            #00d9ff,
-            #00ff9d,
-            #ffe600
-        );
-
-    background-size:400%;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        rgbText
-        4s
-        linear
-        infinite;
-}
-
-/* یک کادر برای تمام قوانین */
-
-.rules-text{
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    border-radius:20px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    padding:25px;
-
-    color:#e9e9e9;
-
-    font-size:16px;
-
-    line-height:2.25;
-
-    white-space:pre-line;
-}
-
-/* ================= REGISTER ================= */
-
-.register-section{
-
-    text-align:center;
-
-    padding-bottom:80px;
-}
-
-.register-section p{
-
-    color:#aaa;
-
-    line-height:2;
-
-    margin-bottom:20px;
-}
-
-.warning-box{
-
-    max-width:720px;
-
-    margin:
-        0
-        auto
-        25px;
-
-    padding:20px;
-
-    border-radius:20px;
-
-    background:
-        rgba(255,0,85,.08);
-
-    border:
-        1px solid
-        rgba(255,0,85,.3);
-
-    color:#fff;
-
-    line-height:2;
-
-    box-shadow:
-        0 0 30px
-        rgba(255,0,85,.08);
-}
-
-.warning-box strong{
-
-    color:#ff4f8b;
-
-    display:block;
-
-    font-size:18px;
-
-    margin-bottom:5px;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:3000;
-
-    background:
-        rgba(0,0,0,.72);
-
-    backdrop-filter:
-        blur(12px);
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
-}
-
-.modal.show{
-
-    display:flex;
-
-    animation:
-        modalFade
-        .25s
-        ease;
-}
-
-@keyframes modalFade{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-
-}
-
-.modal-box{
-
-    width:min(500px,100%);
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    padding:30px;
-
+    inset:-2px;
     border-radius:27px;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,234,255,.5),
+        transparent,
+        rgba(255,0,140,.5),
+        transparent
+    );
+    background-size:300% 300%;
+    animation:borderRGB 4s linear infinite;
+    z-index:-1;
+}
 
-    background:#0b0b18;
+@keyframes borderRGB{
+    to{background-position:300% 0;}
+}
 
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
+.match-card:hover{
+    transform:translateY(-12px) scale(1.02);
     box-shadow:
-        0 0 60px
-        rgba(110,0,255,.25),
-
-        0 0 120px
-        rgba(255,0,160,.1);
-
-    animation:
-        modalBox
-        .4s
-        cubic-bezier(.2,.8,.2,1);
+        0 15px 45px rgba(0,0,0,.45),
+        0 0 35px rgba(0,234,255,.16);
 }
 
-@keyframes modalBox{
-
-    from{
-
-        transform:
-            scale(.75)
-            translateY(30px);
-
-        opacity:0;
-    }
-
-    to{
-
-        transform:
-            scale(1)
-            translateY(0);
-
-        opacity:1;
-    }
-
-}
-
-.modal-head{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:25px;
-}
-
-.modal-head h2{
-
-    font-size:25px;
-}
-
-.close{
-
-    width:38px;
-    height:38px;
-
-    border-radius:12px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:#fff;
-
-    font-size:20px;
-
-    cursor:pointer;
-}
-
-.close:hover{
-
-    background:#ff0055;
-}
-
-.form-group{
-
-    margin-bottom:17px;
-}
-
-.form-group label{
-
-    display:block;
-
-    color:#aaa;
-
-    margin-bottom:8px;
-
-    font-size:14px;
-}
-
-.form-group input{
-
-    width:100%;
-
-    padding:14px 15px;
-
-    border-radius:14px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:#fff;
-
-    font-family:inherit;
-
-    outline:none;
-
-    transition:.3s;
-}
-
-.form-group input:focus{
-
-    border-color:#00d9ff;
-
-    box-shadow:
-        0 0 18px
-        rgba(0,217,255,.15);
-}
-
-.receipt-notice{
-
-    padding:17px;
-
-    border-radius:16px;
-
-    background:
-        rgba(0,217,255,.07);
-
-    border:
-        1px solid
-        rgba(0,217,255,.22);
-
-    color:#d9faff;
-
-    line-height:2;
-
-    font-size:14px;
-
-    margin:
-        15px
-        0
-        20px;
-}
-
-.receipt-notice strong{
-
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:100px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:15px;
+    background:rgba(0,234,255,.13);
     color:#00eaff;
+    border:1px solid rgba(0,234,255,.3);
 }
 
-.submit{
-
-    width:100%;
-
-    padding:15px;
-
-    border:0;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff0055,
-            #7100ff,
-            #00d9ff
-        );
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-weight:900;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
+.badge.free{
+    color:#00ff88;
+    background:rgba(0,255,136,.12);
+    border-color:rgba(0,255,136,.3);
 }
 
-.submit:hover{
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 0 30px
-        rgba(0,217,255,.3);
-}
-
-/* ================= SUCCESS ================= */
-
-.success-icon{
-
-    width:85px;
-    height:85px;
-
-    border-radius:50%;
-
-    margin:
-        0
-        auto
-        20px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    font-size:42px;
-
-    background:
-        rgba(0,255,157,.1);
-
-    border:
-        2px solid
-        #00ff9d;
-
-    color:#00ff9d;
-
-    box-shadow:
-        0 0 35px
-        rgba(0,255,157,.25);
-
-    animation:
-        successPulse
-        1.5s
-        infinite;
-}
-
-@keyframes successPulse{
-
-    50%{
-
-        transform:
-            scale(1.08);
-
-        box-shadow:
-            0 0 60px
-            rgba(0,255,157,.45);
-    }
-
-}
-
-.success-content{
-
-    text-align:center;
-}
-
-.success-content h2{
-
-    font-size:28px;
-
+.match-card h3{
+    font-size:25px;
     margin-bottom:10px;
 }
 
-.success-content p{
+.match-card p{
+    color:#bfc0ca;
+    line-height:1.9;
+    font-size:14px;
+}
 
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:20px;
+}
+
+.info{
+    flex:1;
+    padding:10px;
+    border-radius:13px;
+    text-align:center;
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.info strong{
+    display:block;
+    color:#00eaff;
+    font-size:14px;
+}
+
+.info small{
     color:#aaa;
+}
 
+.card-buttons{
+    display:flex;
+    gap:9px;
+    margin-top:18px;
+}
+
+.btn{
+    border:none;
+    color:#fff;
+    font-weight:800;
+    padding:12px 15px;
+    border-radius:13px;
+    background:linear-gradient(90deg,#ff006a,#7b00ff);
+    box-shadow:0 0 20px rgba(255,0,106,.2);
+    transition:.25s;
+    flex:1;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 0 30px rgba(255,0,106,.4);
+}
+
+.btn.secondary{
+    background:linear-gradient(90deg,#00aaff,#00eaff);
+    color:#001018;
+    box-shadow:0 0 20px rgba(0,234,255,.2);
+}
+
+/* ROOM */
+.room-box{
+    max-width:950px;
+    margin:auto;
+    padding:30px;
+    border-radius:28px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 70px rgba(0,0,0,.3);
+}
+
+.room-header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.room-header h2{
+    font-size:40px;
+    background:linear-gradient(90deg,#00eaff,#ff00a8);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.room-header p{
+    color:#bbb;
+    margin-top:8px;
+}
+
+.details-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.detail{
+    padding:18px;
+    border-radius:18px;
+    background:rgba(0,0,0,.2);
+    border:1px solid rgba(255,255,255,.08);
+    text-align:center;
+}
+
+.detail span{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.detail strong{
+    color:#fff;
+    font-size:17px;
+}
+
+.rules{
+    margin-top:20px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,0,90,.05);
+    border:1px solid rgba(255,0,100,.2);
+}
+
+.rules h3{
+    color:#ff3d89;
+    margin-bottom:15px;
+}
+
+.rules-text{
+    white-space:pre-line;
+    line-height:2;
+    color:#ddd;
+    font-size:14px;
+}
+
+.countdown{
+    margin-top:25px;
+    text-align:center;
+    padding:18px;
+    border-radius:18px;
+    background:linear-gradient(
+        90deg,
+        rgba(255,0,106,.10),
+        rgba(0,234,255,.10)
+    );
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.countdown-title{
+    color:#aaa;
+    margin-bottom:8px;
+}
+
+#countdown{
+    font-size:28px;
+    font-weight:900;
+    color:#00eaff;
+}
+
+/* STORE */
+.store-intro{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 30px;
+    color:#c7c7d3;
+    line-height:2;
+}
+
+.cp-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+}
+
+.cp-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:23px;
+    padding:18px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
+    border:1px solid rgba(255,255,255,.11);
+    backdrop-filter:blur(15px);
+    transition:.35s;
+    animation:cpFloat 4s ease-in-out infinite alternate;
+}
+
+.cp-card:nth-child(even){
+    animation-delay:1s;
+}
+
+@keyframes cpFloat{
+    to{
+        transform:translateY(-7px);
+    }
+}
+
+.cp-card:hover{
+    transform:translateY(-12px) scale(1.025);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.45),
+        0 0 35px rgba(0,234,255,.14);
+}
+
+.cp-image{
+    width:100%;
+    height:170px;
+    object-fit:contain;
+    border-radius:16px;
+    background:rgba(255,255,255,.04);
+    margin-bottom:15px;
+    transition:.4s;
+}
+
+.cp-card:hover .cp-image{
+    transform:scale(1.07) rotate(1deg);
+}
+
+.cp-card h3{
+    font-size:21px;
+    margin-bottom:9px;
+}
+
+.cp-price{
+    color:#00ff9d;
+    font-size:19px;
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.buy-btn{
+    width:100%;
+    border:0;
+    padding:13px;
+    border-radius:14px;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(90deg,#0077ff,#00eaff,#7b00ff);
+    background-size:200%;
+    animation:buyRGB 3s linear infinite;
+    transition:.25s;
+}
+
+@keyframes buyRGB{
+    to{background-position:200% center;}
+}
+
+.buy-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(0,234,255,.3);
+}
+
+/* OFFER */
+.offer-card{
+    border-color:rgba(255,190,0,.28);
+}
+
+.offer-card::after{
+    content:"آفر ویژه";
+    position:absolute;
+    top:13px;
+    left:-35px;
+    width:130px;
+    padding:5px;
+    text-align:center;
+    font-size:11px;
+    font-weight:900;
+    background:linear-gradient(90deg,#ff8a00,#ffe600);
+    color:#171000;
+    transform:rotate(-35deg);
+    box-shadow:0 0 20px rgba(255,200,0,.25);
+}
+
+.offer-card .cp-price{
+    color:#ffd900;
+}
+
+/* CP RULES */
+.cp-rules{
+    margin-top:45px;
+    padding:25px;
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,234,255,.07),
+            rgba(255,0,140,.05)
+        );
+    border:1px solid rgba(0,234,255,.2);
+    box-shadow:0 0 35px rgba(0,234,255,.05);
+}
+
+.cp-rules-title{
+    text-align:center;
+    font-size:27px;
+    font-weight:900;
+    margin-bottom:22px;
+    background:linear-gradient(90deg,#00eaff,#ff00a8,#ffe600);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.cp-rule{
+    padding:16px;
+    margin-bottom:12px;
+    border-radius:15px;
+    background:rgba(0,0,0,.20);
+    border:1px solid rgba(255,255,255,.07);
+    line-height:2;
+    color:#ddd;
+}
+
+.cp-rule:last-child{
+    margin-bottom:0;
+}
+
+/* SUPPORT */
+.support-box{
+    max-width:700px;
+    margin:40px auto;
+    text-align:center;
+    padding:40px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(18px);
+}
+
+.support-box h2{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.support-box p{
+    color:#bbb;
     line-height:2;
 }
 
 .rubika{
-
     display:inline-block;
-
-    margin:
-        20px
-        0;
-
-    padding:
-        15px
-        25px;
-
+    margin-top:25px;
+    padding:15px 25px;
     border-radius:15px;
-
-    color:#00d9ff;
-
-    background:
-        rgba(0,217,255,.07);
-
-    border:
-        1px solid
-        rgba(0,217,255,.25);
-
-    font-size:20px;
-
+    background:linear-gradient(90deg,#00b7ff,#0077ff);
+    color:#fff;
+    text-decoration:none;
     font-weight:900;
-
-    direction:ltr;
+    box-shadow:0 0 30px rgba(0,140,255,.25);
+    transition:.25s;
 }
 
-/* ================= FOOTER ================= */
-
-footer{
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.08);
-
-    background:
-        rgba(0,0,0,.2);
-
-    padding:30px 15px;
-
-    text-align:center;
-
-    color:#777;
+.rubika:hover{
+    transform:scale(1.05);
 }
 
-footer strong{
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(12px);
+}
 
+.modal.show{
+    display:flex;
+    animation:modalBg .3s ease;
+}
+
+@keyframes modalBg{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.modal-box{
+    width:min(520px,100%);
+    padding:30px;
+    border-radius:27px;
     background:
         linear-gradient(
-            90deg,
-            #ff0055,
-            #7200ff,
-            #00d9ff
+            145deg,
+            rgba(25,25,40,.98),
+            rgba(10,10,20,.98)
         );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7),
+        0 0 40px rgba(0,234,255,.08);
+    animation:modalBox .35s cubic-bezier(.2,.8,.2,1);
 }
 
-/* ================= MOBILE ================= */
+@keyframes modalBox{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
 
+.modal-box h2{
+    text-align:center;
+    margin-bottom:12px;
+    font-size:28px;
+}
+
+.modal-box p{
+    color:#bbb;
+    text-align:center;
+    line-height:1.9;
+}
+
+.modal-box input{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    color:#fff;
+    outline:none;
+    font-size:15px;
+}
+
+.modal-box input:focus{
+    border-color:#00eaff;
+    box-shadow:0 0 20px rgba(0,234,255,.12);
+}
+
+.modal-actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.close-btn{
+    background:rgba(255,255,255,.08);
+}
+
+/* WARNING */
+.receipt-warning{
+    margin-top:15px;
+    padding:14px;
+    border-radius:14px;
+    color:#ffd86b;
+    background:rgba(255,180,0,.07);
+    border:1px solid rgba(255,180,0,.18);
+    font-size:13px;
+    line-height:1.9;
+}
+
+/* FOOTER */
+footer{
+    padding:35px 15px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:rgba(0,0,0,.25);
+}
+
+footer p{
+    color:#aaa;
+    line-height:2;
+}
+
+.credit{
+    color:#00eaff;
+    font-weight:900;
+}
+
+/* RIPPLE */
+.ripple{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,.5);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    animation:ripple .7s ease-out forwards;
+    z-index:9999;
+}
+
+@keyframes ripple{
+    from{
+        width:10px;
+        height:10px;
+        opacity:.7;
+    }
+    to{
+        width:150px;
+        height:150px;
+        opacity:0;
+    }
+}
+
+/* MOBILE */
 @media(max-width:700px){
-
     header{
-        padding:12px 4%;
+        padding:10px;
     }
 
     .nav{
-
         flex-direction:column;
-
-        gap:12px;
     }
 
-    .logo{
-        font-size:24px;
-    }
-
-    .nav-buttons{
-
+    .nav-links{
         width:100%;
-
-        justify-content:center;
     }
 
-    .nav-btn{
-
-        padding:
-            8px
-            13px;
-
+    .nav-links button{
         font-size:12px;
+        padding:8px 10px;
     }
 
     .hero{
-
-        min-height:
-            calc(100vh - 125px);
-
-        padding:50px 0;
+        padding-top:40px;
     }
 
     .hero h1{
-
-        letter-spacing:-2px;
+        font-size:54px;
     }
 
-    .hero-desc{
-
-        font-size:14px;
-    }
-
-    .match-card{
-
-        padding:22px;
-    }
-
-    .match-name{
-
-        font-size:22px;
-    }
-
-    .card-info{
-
-        gap:10px;
-    }
-
-    .info-box{
-
-        padding:
-            15px
-            8px;
-    }
-
-    .info-value{
-
-        font-size:18px;
-    }
-
-    .room-grid{
-
+    .matches{
         grid-template-columns:1fr;
     }
 
-    .room-header{
-
-        padding-top:45px;
+    .cp-grid{
+        grid-template-columns:1fr;
     }
 
-    .rules-card{
-
-        padding:18px;
+    .room-box{
+        padding:20px 14px;
     }
 
-    .rules-text{
-
-        padding:18px;
-
-        font-size:14px;
-
-        line-height:2.15;
+    .room-header h2{
+        font-size:30px;
     }
 
-    .countdown{
-
-        grid-template-columns:
-            repeat(2,1fr);
+    .details-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .time-number{
-
-        font-size:27px;
+    .info-row{
+        flex-direction:column;
     }
 
-    .modal-box{
-
-        padding:22px;
+    .card-buttons,
+    .modal-actions{
+        flex-direction:column;
     }
 
+    .cp-image{
+        height:190px;
+    }
+
+    .cp-rules{
+        padding:16px;
+    }
+
+    .cp-rule{
+        font-size:13px;
+    }
 }
-
-@media(max-width:430px){
-
-    .nav-buttons{
-
-        gap:6px;
-    }
-
-    .nav-btn{
-
-        padding:
-            8px
-            10px;
-    }
-
-    .card-info{
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .main-button{
-
-        width:100%;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="rgb-line top"></div>
-<div class="rgb-line bottom"></div>
-
-<div class="grid"></div>
-
-<div class="orb one"></div>
-<div class="orb two"></div>
-<div class="orb three"></div>
-
-<div class="particles" id="particles"></div>
-
-
-<!-- ================= HEADER ================= -->
+<div class="bg">
+    <div class="grid"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+</div>
 
 <header>
-
     <div class="nav">
+        <div class="logo">امیر کیل</div>
 
-        <div class="logo">
-            امیر کیل
+        <div class="nav-links">
+            <button onclick="showPage('home')">خانه</button>
+            <button onclick="showPage('rooms')">اطلاعات روم</button>
+            <button onclick="showPage('store')">فروشگاه</button>
+            <button onclick="openSupport()">پشتیبانی</button>
         </div>
-
-        <div class="nav-buttons">
-
-            <button
-                class="nav-btn active"
-                onclick="showPage('home',this)"
-            >
-                خانه
-            </button>
-
-            <button
-                class="nav-btn"
-                onclick="showPage('room',this)"
-            >
-                اطلاعات روم
-            </button>
-
-            <button
-                class="nav-btn"
-                onclick="openSupport()"
-            >
-                پشتیبانی
-            </button>
-
-        </div>
-
     </div>
-
 </header>
 
-
-<!-- ================= HOME ================= -->
-
-<section
-    id="home"
-    class="page active"
->
-
-    <div class="hero">
-
-        <div class="container hero-content">
-
-            <div class="badge">
-
-                <span class="badge-dot"></span>
-
-                مسابقه فعال
-
-            </div>
-
-
-            <h1>
-                امیر کیل
-            </h1>
-
-
-            <div class="hero-sub">
-                مسابقات کالاف
-            </div>
-
-
-            <p class="hero-desc">
-
-                وارد مسابقات حرفه‌ای کالاف دیوتی موبایل شو،
-                با بازیکنان دیگر رقابت کن و برای کسب جایزه بجنگ!
-
-            </p>
-
-
-            <button
-                class="main-button"
-                onclick="showPage('room')"
-            >
-                مشاهده مسابقه ⚡
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="match-section">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    مسابقه فعال
-                </h2>
-
-                <p>
-                    مولتی پلیر کالاف دیوتی موبایل
-                </p>
-
-            </div>
-
-
-            <!-- کارت فقط قیمت + مولتی -->
-
-            <div class="match-card">
-
-                <div class="match-top">
-
-                    <div class="match-name">
-                        مولتی مچ 1
-                    </div>
-
-                    <div class="multi">
-                        ● MULTIPLAYER
-                    </div>
-
-                </div>
-
-
-                <div class="card-info">
-
-                    <div class="info-box">
-
-                        <div class="info-label">
-                            هزینه ورود
-                        </div>
-
-                        <div class="info-value price">
-                            ۳۰,۰۰۰ تومان
-                        </div>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <div class="info-label">
-                            ظرفیت
-                        </div>
-
-                        <div class="info-value">
-                            ۶ نفر
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="card-button"
-                    onclick="showPage('room')"
-                >
-                    مشاهده جزئیات کامل روم
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ROOM PAGE ================= -->
-
-<section
-    id="room"
-    class="page"
->
-
+<!-- HOME -->
+<section id="home" class="page active">
     <div class="container">
 
-        <div class="room-header">
-
-            <div class="badge">
-
-                <span class="badge-dot"></span>
-
-                اطلاعات کامل مسابقه
-
-            </div>
-
-
-            <h1>
-                مولتی مچ 1
-            </h1>
-
-
-            <p>
-                تمام اطلاعات روم و قوانین مسابقه
-            </p>
-
+        <div class="hero">
+            <h1>امیر کیل</h1>
+            <p>مسابقات کالاف</p>
+            <div class="hero-line"></div>
         </div>
 
+        <div class="section-title">
+            <span>مسابقات فعال</span>
+        </div>
 
-        <!-- ================= DETAILS ================= -->
+        <div class="matches">
 
-        <div class="room-grid">
+            <!-- ROOM 1 -->
+            <div class="match-card">
+                <span class="badge">MULTIPLAYER</span>
 
+                <h3>مولتی مچ 1</h3>
 
-            <div class="detail-card">
+                <p>
+                    مسابقه مولتی‌پلیر کالاف دیوتی موبایل
+                    با قوانین اختصاصی اسنایپ.
+                </p>
 
-                <h3>
-                    🎮 مشخصات بازی
-                </h3>
+                <div class="info-row">
+                    <div class="info">
+                        <strong>۳۰,۰۰۰</strong>
+                        <small>تومان</small>
+                    </div>
 
-
-                <div class="detail-row">
-
-                    <span>
-                        بازی
-                    </span>
-
-                    <span>
-                        Call of Duty Mobile
-                    </span>
-
+                    <div class="info">
+                        <strong>۶ نفر</strong>
+                        <small>ظرفیت</small>
+                    </div>
                 </div>
 
+                <div class="card-buttons">
+                    <button class="btn" onclick="openRoom('1')">
+                        اطلاعات روم
+                    </button>
 
-                <div class="detail-row">
-
-                    <span>
-                        نوع
-                    </span>
-
-                    <span>
-                        Multiplayer
-                    </span>
-
+                    <button class="btn secondary" onclick="openRegister('1')">
+                        ثبت‌نام
+                    </button>
                 </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        مود
-                    </span>
-
-                    <span>
-                        Search & Destroy
-                    </span>
-
-                </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        مپ
-                    </span>
-
-                    <span>
-                        Crash
-                    </span>
-
-                </div>
-
             </div>
 
+            <!-- ROOM 2 -->
+            <div class="match-card">
+                <span class="badge">MULTIPLAYER</span>
 
-            <div class="detail-card">
+                <h3>مولتی مچ 2</h3>
 
-                <h3>
-                    💰 اطلاعات مسابقه
-                </h3>
+                <p>
+                    مسابقه مولتی‌پلیر کالاف دیوتی موبایل
+                    با قوانین اختصاصی اسنایپ.
+                </p>
 
+                <div class="info-row">
+                    <div class="info">
+                        <strong>۳۰,۰۰۰</strong>
+                        <small>تومان</small>
+                    </div>
 
-                <div class="detail-row">
-
-                    <span>
-                        هزینه ورود
-                    </span>
-
-                    <span>
-                        ۳۰,۰۰۰ تومان
-                    </span>
-
+                    <div class="info">
+                        <strong>۶ نفر</strong>
+                        <small>ظرفیت</small>
+                    </div>
                 </div>
 
+                <div class="card-buttons">
+                    <button class="btn" onclick="openRoom('2')">
+                        اطلاعات روم
+                    </button>
 
-                <div class="detail-row">
-
-                    <span>
-                        ظرفیت
-                    </span>
-
-                    <span>
-                        ۶ نفر
-                    </span>
-
+                    <button class="btn secondary" onclick="openRegister('2')">
+                        ثبت‌نام
+                    </button>
                 </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        جایزه
-                    </span>
-
-                    <span>
-                        ۶۰,۰۰۰ تومان برای ۲ نفر
-                    </span>
-
-                </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        تاریخ
-                    </span>
-
-                    <span>
-                        ۲۷ شهریور ۱۴۰۵
-                    </span>
-
-                </div>
-
             </div>
 
+            <!-- ROOM 3 -->
+            <div class="match-card">
+                <span class="badge">MULTIPLAYER</span>
 
-            <div class="detail-card">
+                <h3>مولتی مچ 3</h3>
 
-                <h3>
-                    ⏰ زمان مسابقه
-                </h3>
+                <p>
+                    مسابقه مولتی‌پلیر کالاف دیوتی موبایل
+                    با قوانین اختصاصی اسنایپ.
+                </p>
 
+                <div class="info-row">
+                    <div class="info">
+                        <strong>۳۰,۰۰۰</strong>
+                        <small>تومان</small>
+                    </div>
 
-                <div class="detail-row">
-
-                    <span>
-                        شروع
-                    </span>
-
-                    <span>
-                        ساعت ۱۸:۳۰
-                    </span>
-
+                    <div class="info">
+                        <strong>۶ نفر</strong>
+                        <small>ظرفیت</small>
+                    </div>
                 </div>
 
+                <div class="card-buttons">
+                    <button class="btn" onclick="openRoom('3')">
+                        اطلاعات روم
+                    </button>
 
-                <div class="detail-row">
-
-                    <span>
-                        ارسال دعوت روم
-                    </span>
-
-                    <span>
-                        حدود ۱۵ دقیقه قبل
-                    </span>
-
+                    <button class="btn secondary" onclick="openRegister('3')">
+                        ثبت‌نام
+                    </button>
                 </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        زمان تقریبی
-                    </span>
-
-                    <span>
-                        حدود ۱۵ دقیقه
-                    </span>
-
-                </div>
-
             </div>
 
+            <!-- ROOM 4 -->
+            <div class="match-card">
+                <span class="badge">MULTIPLAYER</span>
 
-            <div class="detail-card">
+                <h3>مولتی مچ 4</h3>
 
-                <h3>
-                    📌 نکات ورود
-                </h3>
+                <p>
+                    مسابقه مولتی‌پلیر کالاف دیوتی موبایل
+                    با قوانین اختصاصی اسنایپ.
+                </p>
 
+                <div class="info-row">
+                    <div class="info">
+                        <strong>۳۰,۰۰۰</strong>
+                        <small>تومان</small>
+                    </div>
 
-                <div class="detail-row">
-
-                    <span>
-                        مپ
-                    </span>
-
-                    <span>
-                        باید از قبل دانلود شده باشد
-                    </span>
-
+                    <div class="info">
+                        <strong>۶ نفر</strong>
+                        <small>ظرفیت</small>
+                    </div>
                 </div>
 
+                <div class="card-buttons">
+                    <button class="btn" onclick="openRoom('4')">
+                        اطلاعات روم
+                    </button>
 
-                <div class="detail-row">
+                    <button class="btn secondary" onclick="openRegister('4')">
+                        ثبت‌نام
+                    </button>
+                </div>
+            </div>
 
-                    <span>
-                        نام بازی
-                    </span>
+            <!-- ROOM 5 -->
+            <div class="match-card">
+                <span class="badge free">GUN FREE</span>
 
-                    <span>
-                        نام دقیق داخل بازی
-                    </span>
+                <h3>مولتی مچ 5</h3>
 
+                <p>
+                    مسابقه مولتی‌پلیر کالاف دیوتی موبایل
+                    با گان آزاد.
+                </p>
+
+                <div class="info-row">
+                    <div class="info">
+                        <strong>۵۰,۰۰۰</strong>
+                        <small>تومان</small>
+                    </div>
+
+                    <div class="info">
+                        <strong>۶ نفر</strong>
+                        <small>ظرفیت</small>
+                    </div>
                 </div>
 
+                <div class="card-buttons">
+                    <button class="btn" onclick="openRoom('5')">
+                        اطلاعات روم
+                    </button>
 
-                <div class="detail-row">
-
-                    <span>
-                        روم
-                    </span>
-
-                    <span>
-                        دعوت قبل از شروع ارسال می‌شود
-                    </span>
-
+                    <button class="btn secondary" onclick="openRegister('5')">
+                        ثبت‌نام
+                    </button>
                 </div>
-
             </div>
 
         </div>
+    </div>
+</section>
 
+<!-- ROOMS -->
+<section id="rooms" class="page">
+    <div class="container">
 
-        <!-- ================= COUNTDOWN ================= -->
-
-        <div class="detail-card countdown-card">
-
-            <h3>
-                ⏳ زمان باقی‌مانده تا مسابقه
-            </h3>
-
-
-            <div class="countdown">
-
-                <div class="time-box">
-
-                    <div
-                        class="time-number"
-                        id="days"
-                    >
-                        --
-                    </div>
-
-                    <div class="time-label">
-                        روز
-                    </div>
-
-                </div>
-
-
-                <div class="time-box">
-
-                    <div
-                        class="time-number"
-                        id="hours"
-                    >
-                        --
-                    </div>
-
-                    <div class="time-label">
-                        ساعت
-                    </div>
-
-                </div>
-
-
-                <div class="time-box">
-
-                    <div
-                        class="time-number"
-                        id="minutes"
-                    >
-                        --
-                    </div>
-
-                    <div class="time-label">
-                        دقیقه
-                    </div>
-
-                </div>
-
-
-                <div class="time-box">
-
-                    <div
-                        class="time-number"
-                        id="seconds"
-                    >
-                        --
-                    </div>
-
-                    <div class="time-label">
-                        ثانیه
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="section-title">
+            <span>اطلاعات مسابقه</span>
         </div>
 
+        <div class="room-box">
 
-        <!-- ================= RULES ================= -->
-
-        <div class="rules-card">
-
-            <div class="rules-title">
-                قوانین بازی چگونه است؟
+            <div class="room-header">
+                <h2 id="roomTitle">مولتی مچ 1</h2>
+                <p id="roomSubtitle">مولتی مچ ۱ • فقط اسنایپ</p>
             </div>
 
+            <div class="details-grid">
 
-            <!-- تمام متن قوانین در یک کادر -->
+                <div class="detail">
+                    <span>بازی</span>
+                    <strong>Call of Duty Mobile</strong>
+                </div>
 
-            <div class="rules-text">فقط اسنایپ ولا غیر: مود سرچ اند دیستروی، استفاده از اسنایپ‌های نیمه اتوماتیک (رگباری) از جمله (XPR 50, M21 EBR, SVD) و اسنایپ‌های خشاب بمبی از جمله (NA 45, Rytec AMR) ممنوع می‌باشد. استفاده از هرگونه آیتم پرتابی (نید، فلش، اسموک، سنسور، استیم شات و…) ممنوع می‌باشد. موارد بن (ممنوع) در بازی استفاده از این موارد باعث عدم دریافت جایزه و جریمه می‌شود:
+                <div class="detail">
+                    <span>مود</span>
+                    <strong>Search & Destroy</strong>
+                </div>
+
+                <div class="detail">
+                    <span>مپ</span>
+                    <strong>Crash</strong>
+                </div>
+
+                <div class="detail">
+                    <span>ظرفیت</span>
+                    <strong>۶ نفر</strong>
+                </div>
+
+                <div class="detail">
+                    <span>ورودی</span>
+                    <strong id="roomPrice">۳۰,۰۰۰ تومان</strong>
+                </div>
+
+                <div class="detail">
+                    <span>جایزه</span>
+                    <strong id="roomPrize">۶۰,۰۰۰ تومان برای ۲ نفر</strong>
+                </div>
+
+                <div class="detail">
+                    <span>تاریخ</span>
+                    <strong>۲۷ شهریور ۱۴۰۵</strong>
+                </div>
+
+                <div class="detail">
+                    <span>ساعت</span>
+                    <strong>۱۸:۳۰</strong>
+                </div>
+
+            </div>
+
+            <div class="rules">
+                <h3>قوانین مسابقه</h3>
+
+                <div id="rulesText" class="rules-text">
+فقط اسنایپ ولا غیر: مود سرچ اند دیستروی، استفاده از اسنایپ‌های نیمه اتوماتیک (رگباری) از جمله (XPR 50, M21 EBR, SVD) و اسنایپ‌های خشاب بمبی از جمله (NA 45, Rytec AMR) ممنوع می‌باشد. استفاده از هرگونه آیتم پرتابی (نید، فلش، اسموک، سنسور، استیم شات و…) ممنوع می‌باشد. موارد بن (ممنوع) در بازی استفاده از این موارد باعث عدم دریافت جایزه و جریمه می‌شود:
 
 سنسورها: (Heartbeat sensor) (trip sensor)
 
@@ -2450,106 +1242,704 @@ footer strong{
 
 اتچمنت‌ها: خشاب ترمایت (thermite) روی همه گان‌ها، خشاب دراگون برد (Dragon’s Breath)
 
-بعد از تموم شدن مچ از کاستوم لفت ندین اگر لفت بدین آمار تون نمیافته و جایزه بهتون تعلق نمیگیره.</div>
+بعد از تموم شدن مچ از کاستوم لفت ندین اگر لفت بدین آمار تون نمیافته و جایزه بهتون تعلق نمیگیره.
+                </div>
+            </div>
+
+            <div class="countdown">
+                <div class="countdown-title">
+                    زمان باقی‌مانده تا مسابقه
+                </div>
+
+                <div id="countdown">
+                    در حال محاسبه...
+                </div>
+            </div>
+
+            <button
+                class="btn"
+                style="margin-top:20px;width:100%;"
+                onclick="openRegister(currentRoom)"
+            >
+                ثبت‌نام در این روم
+            </button>
 
         </div>
+    </div>
+</section>
 
+<!-- STORE -->
+<section id="store" class="page">
+    <div class="container">
 
-        <!-- ================= REGISTER ================= -->
+        <div class="hero" style="padding-top:20px;">
+            <h1 style="font-size:clamp(40px,7vw,75px);">
+                فروشگاه CP
+            </h1>
 
-        <div class="register-section">
+            <p>
+                خرید سی پی کالاف دیوتی موبایل
+            </p>
 
-            <div class="warning-box">
+            <div class="hero-line"></div>
+        </div>
 
-                <strong>
-                    ⚠️ توجه مهم
-                </strong>
+        <div class="store-intro">
+            برای خرید هر محصول روی دکمه خرید بزنید و سپس اطلاعات سفارش
+            و رسید پرداخت را در روبیکا برای
+            <strong style="color:#00eaff;">@amirtbpedit</strong>
+            ارسال کنید.
+        </div>
 
-                حتماً بعد از واریز هزینه،
-                رسید واریزی را در روبیکا برای
-                <b dir="ltr">@amirtbpedit</b>
-                ارسال کنید.
+        <div class="cp-grid">
 
-                <br>
+            <!-- 80 CP -->
+            <div class="cp-card">
+                <img
+                    class="cp-image"
+                    src="https://cpbama.com/uploads/product/call-of-duty-cp-531mb.webp"
+                    alt="80 CP"
+                >
 
-                در صورت ارسال نکردن رسید واریزی،
-                <b>اینویت روم برای شما ارسال نمی‌شود.</b>
+                <h3>۸۰ CP</h3>
 
+                <div class="cp-price">
+                    ۲۰۹,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn" onclick="buyCP('۸۰ CP - ۲۰۹,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 160 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-GHLoE.webp"
+                alt="160 CP">
+
+                <h3>۱۶۰ CP</h3>
+                <div class="cp-price">۴۱۸,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۱۶۰ CP - ۴۱۸,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 240 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-AnE9N.webp"
+                alt="240 CP">
+
+                <h3>۲۴۰ CP</h3>
+                <div class="cp-price">۶۲۷,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۲۴۰ CP - ۶۲۷,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 320 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-ieQDJ.webp"
+                alt="320 CP">
+
+                <h3>۳۲۰ CP</h3>
+                <div class="cp-price">۸۳۶,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۳۲۰ CP - ۸۳۶,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 400 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-w6hjI.webp"
+                alt="400 CP">
+
+                <h3>۴۰۰ CP</h3>
+                <div class="cp-price">۱,۰۴۵,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۴۰۰ CP - ۱,۰۴۵,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 420 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-xbUag.webp"
+                alt="420 CP">
+
+                <h3>۴۲۰ CP</h3>
+                <div class="cp-price">۱,۲۵۴,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۴۲۰ CP - ۱,۲۵۴,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 480 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-lXlWa.webp"
+                alt="480 CP">
+
+                <h3>۴۸۰ CP</h3>
+                <div class="cp-price">۱,۲۵۴,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۴۸۰ CP - ۱,۲۵۴,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 500 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-yDGzB.webp"
+                alt="500 CP">
+
+                <h3>۵۰۰ CP</h3>
+                <div class="cp-price">۱,۳۳۷,۶۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۵۰۰ CP - ۱,۳۳۷,۶۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 560 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-lctus.webp"
+                alt="560 CP">
+
+                <h3>۵۶۰ CP</h3>
+                <div class="cp-price">۱,۴۶۳,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۵۶۰ CP - ۱,۴۶۳,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 580 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-1z8KW.webp"
+                alt="580 CP">
+
+                <h3>۵۸۰ CP فوری</h3>
+                <div class="cp-price">۱,۶۷۲,۰۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۵۸۰ CP فوری - ۱,۶۷۲,۰۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 660 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-mt2yo.webp"
+                alt="660 CP">
+
+                <h3>۶۶۰ CP فوری</h3>
+                <div class="cp-price">۱,۷۲۲,۶۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۶۶۰ CP فوری - ۱,۷۲۲,۶۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 720 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-42W9G.webp"
+                alt="720 CP">
+
+                <h3>۷۲۰ CP فوری</h3>
+                <div class="cp-price">۱,۷۷۲,۱۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۷۲۰ CP فوری - ۱,۷۷۲,۱۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 740 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-2WdbK.webp"
+                alt="740 CP">
+
+                <h3>۷۴۰ CP فوری</h3>
+                <div class="cp-price">۱,۸۱۸,۳۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۷۴۰ CP فوری - ۱,۸۱۸,۳۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 880 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-1urd3.webp"
+                alt="880 CP">
+
+                <h3>۸۸۰ CP فوری</h3>
+                <div class="cp-price">۱,۸۶۰,۱۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۸۸۰ CP فوری - ۱,۸۶۰,۱۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 960 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-jOUep.webp"
+                alt="960 CP">
+
+                <h3>۹۶۰ CP فوری</h3>
+                <div class="cp-price">۱,۹۰۱,۹۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۹۶۰ CP فوری - ۱,۹۰۱,۹۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 1040 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-8u6Qz.webp"
+                alt="1040 CP">
+
+                <h3>۱۰۴۰ CP فوری</h3>
+                <div class="cp-price">۲,۰۴۸,۲۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۱۰۴۰ CP فوری - ۲,۰۴۸,۲۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 1120 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-7VJVI.webp"
+                alt="1120 CP">
+
+                <h3>۱۱۲۰ CP فوری</h3>
+                <div class="cp-price">۲,۲۵۷,۲۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۱۱۲۰ CP فوری - ۲,۲۵۷,۲۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 1300 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-d5mLK.webp"
+                alt="1300 CP">
+
+                <h3>۱۳۰۰ CP فوری</h3>
+                <div class="cp-price">۲,۷۵۸,۸۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۱۳۰۰ CP فوری - ۲,۷۵۸,۸۰۰ تومان')">
+                    خرید CP
+                </button>
+            </div>
+
+            <!-- 1760 -->
+            <div class="cp-card">
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-pFLiZ.webp"
+                alt="1760 CP">
+
+                <h3>۱۷۶۰ CP فوری</h3>
+                <div class="cp-price">۳,۳۲۳,۱۰۰ تومان</div>
+
+                <button class="buy-btn"
+                onclick="buyCP('۱۷۶۰ CP فوری - ۳,۳۲۳,۱۰۰ تومان')">
+                    خرید CP
+                </button>
             </div>
 
 
+            <!-- ================= OFFERS ================= -->
+
+            <!-- 1 Dollar 80 CP -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-531mb.webp"
+                alt="آفر 1 دلاری 80 سی پی">
+
+                <h3>آفر 1 دلاری 80 سی پی</h3>
+
+                <div class="cp-price">
+                    ۲۴۷,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر 1 دلاری 80 سی پی - ۲۴۷,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- 2 Dollar 400 CP -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-vs1NI.webp"
+                alt="آفر 2 دلاری 400 سی پی">
+
+                <h3>آفر 2 دلاری 400 سی پی</h3>
+
+                <div class="cp-price">
+                    ۳۸۰,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر 2 دلاری 400 سی پی - ۳۸۰,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- 4 Dollar 800 CP -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-Hedpo.webp"
+                alt="آفر 4 دلاری 800 سی پی">
+
+                <h3>آفر 4 دلاری 800 سی پی</h3>
+
+                <div class="cp-price">
+                    ۷۶۰,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر 4 دلاری 800 سی پی - ۷۶۰,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- 10 Dollar 2000 CP -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-XoBHL.webp"
+                alt="آفر 10 دلاری 2000 سی پی">
+
+                <h3>آفر 10 دلاری 2000 سی پی</h3>
+
+                <div class="cp-price">
+                    ۱,۷۱۰,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر 10 دلاری 2000 سی پی - ۱,۷۱۰,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- Rebate -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-4TFsq.webp"
+                alt="آفر Rebate کالاف">
+
+                <h3>آفر Rebate کالاف</h3>
+
+                <div class="cp-price">
+                    ۶۴۰,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر Rebate کالاف - ۶۴۰,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- Outrider -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-xVp0V.webp"
+                alt="آفر لیمیت Outrider کالاف">
+
+                <h3>آفر لیمیت Outrider کالاف</h3>
+
+                <div class="cp-price">
+                    ۳۸۰,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر لیمیت Outrider کالاف - ۳۸۰,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- Ghost -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-hOMVp.webp"
+                alt="آفر گوست ریجن ایران و هند">
+
+                <h3>آفر گوست ریجن ایران و هند</h3>
+
+                <div class="cp-price">
+                    ۵۵۱,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر گوست ریجن ایران و هند - ۵۵۱,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+            <!-- Supply Pass -->
+            <div class="cp-card offer-card">
+
+                <img class="cp-image"
+                src="https://cpbama.com/uploads/product/call-of-duty-cp-FGWm0.webp"
+                alt="آفر Supply Pass ماهانه 4 دلاری">
+
+                <h3>آفر Supply Pass ماهانه 4 دلاری</h3>
+
+                <div class="cp-price">
+                    ۹۶۳,۰۰۰ تومان
+                </div>
+
+                <button class="buy-btn"
+                onclick="buyCP('آفر Supply Pass ماهانه 4 دلاری - ۹۶۳,۰۰۰ تومان')">
+                    خرید آفر
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CP RULES -->
+        <div class="cp-rules">
+
+            <div class="cp-rules-title">
+                قوانین و توضیحات خرید CP
+            </div>
+
+            <div class="cp-rule">
+                مدت زمان واریز سی پی های ریز بین 5 الی 30 دقیقه است و در روز های شلوغ ممکن است تا 3 ساعت هم طول بکشه
+            </div>
+
+            <div class="cp-rule">
+                با توجه به محدودیت جدید اکتیویژن برای سی ‌پی ‌های زمانبر، مسئولیت هرگونه منفی یا صفر شدن سی ‌پی در اثر استفاده از این نوع سی ‌پی ‌ها، بر عهده مشتریه. تاکنون گزارشی مبنی بر منفی شدن سی ‌پی زمانبر دریافت نشده اما هیچ تضمینی ‌نمی‌توان برای عدم ‌وقوع این اتفاق در آینده ارائه داد. مدت زمان واریز سی پی های زمانبر بین 1 الی 10 روز می باشد.
+            </div>
+
+            <div class="cp-rule">
+                سی پی های فوری بسته های 2400 تا 10800 فوری در کمتر از 1 ساعت واریز میشه و دارای رسید گوگل پلی هستن
+            </div>
+
+            <div class="cp-rule">
+                سی پی باما نماد اعتماد داره و از درگاه امن استفاده میکنه و از هر لحاظ معتبره پس می تونی خریدتو با خیال راحت ثبت کنی
+            </div>
+
+            <div class="cp-rule">
+                در صورتی که آفر یا محصول مورد نظر در اکانت شما موجود نباشد به همان مقدار مبلغ سی پی شارژ می شود
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support" class="page">
+    <div class="container">
+
+        <div class="section-title">
+            <span>پشتیبانی</span>
+        </div>
+
+        <div class="support-box">
+
+            <h2>پشتیبانی امیر کیل</h2>
+
             <p>
-                برای ثبت‌نام فقط اسم دقیق داخل بازی Call of Duty را وارد کنید.
+                برای ثبت سفارش، ارسال رسید پرداخت،
+                دریافت اطلاعات مسابقه یا پیگیری سفارش
+                در روبیکا با ما در ارتباط باشید.
             </p>
 
+            <a
+                class="rubika"
+                href="https://rubika.ir/amirtbpedit"
+                target="_blank"
+            >
+                ارتباط در روبیکا: @amirtbpedit
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>
+        مسابقات کالاف • امیر کیل
+    </p>
+
+    <p class="credit">
+        طراحی و توسعه توسط امیر حسین جبارفر
+    </p>
+</footer>
+
+
+<!-- REGISTER MODAL -->
+<div class="modal" id="registerModal">
+
+    <div class="modal-box">
+
+        <h2>ثبت‌نام مسابقه</h2>
+
+        <p id="registerDescription">
+            نام اکانت کالاف خود را دقیق وارد کنید.
+        </p>
+
+        <input
+            id="playerName"
+            type="text"
+            placeholder="نام اکانت کالاف"
+            autocomplete="off"
+        >
+
+        <div class="receipt-warning">
+            ⚠️ بعد از پرداخت حتماً رسید واریزی را در روبیکا برای
+            <strong>@amirtbpedit</strong>
+            ارسال کنید؛ بدون ارسال رسید، اینوایت روم برای شما ارسال نمی‌شود.
+        </div>
+
+        <div class="modal-actions">
 
             <button
-                class="main-button"
-                onclick="window.location.href='https://baserow.io/form/wdEi5yLUBaweWsGbktsF-nW8_BPTQDz9x5V5n3uOnno'"
+                class="btn"
+                onclick="submitRegistration()"
             >
-                ثبت اسم مسابقه 🚀
+                ثبت نام
+            </button>
+
+            <button
+                class="btn close-btn"
+                onclick="closeModal('registerModal')"
+            >
+                بستن
             </button>
 
         </div>
 
     </div>
+</div>
 
-</section>
 
-
-<!-- ================= SUPPORT ================= -->
-
-<div
-    class="modal"
-    id="supportModal"
->
+<!-- SUCCESS MODAL -->
+<div class="modal" id="successModal">
 
     <div class="modal-box">
 
-        <div class="modal-head">
+        <h2>✅ ثبت شد</h2>
 
-            <h2>
-                پشتیبانی
-            </h2>
+        <p id="successText">
+            اطلاعات شما ثبت شد.
+        </p>
 
+        <div class="receipt-warning">
+            حتماً رسید واریزی را در روبیکا برای
+            <strong>@amirtbpedit</strong>
+            ارسال کنید.
+            <br>
+            بدون رسید، اینوایت روم داده نمی‌شود.
+        </div>
+
+        <div class="modal-actions">
+
+            <a
+                class="btn"
+                style="text-align:center;text-decoration:none;"
+                href="https://rubika.ir/amirtbpedit"
+                target="_blank"
+            >
+                ارسال رسید در روبیکا
+            </a>
 
             <button
-                class="close"
-                onclick="closeModal('supportModal')"
+                class="btn close-btn"
+                onclick="closeModal('successModal')"
             >
-                ×
+                بستن
             </button>
 
         </div>
 
-
-        <div
-            class="support-info"
-            style="text-align:center;"
-        >
-
-            <p
-                style="
-                color:#aaa;
-                line-height:2;
-                "
-            >
-
-                برای سوالات،
-                هماهنگی مسابقه و پیگیری ثبت‌نام
-                از طریق آیدی زیر با پشتیبانی
-                در ارتباط باشید.
-
-            </p>
+    </div>
+</div>
 
 
-            <div class="rubika">
+<!-- SUPPORT MODAL -->
+<div class="modal" id="supportModal">
+
+    <div class="modal-box">
+
+        <h2>پشتیبانی</h2>
+
+        <p>
+            برای سفارش و پشتیبانی در روبیکا پیام دهید:
+        </p>
+
+        <div style="text-align:center;margin-top:20px;">
+            <strong style="font-size:25px;color:#00eaff;">
                 @amirtbpedit
-            </div>
+            </strong>
+        </div>
 
+        <div class="modal-actions">
+
+            <a
+                class="btn"
+                style="text-align:center;text-decoration:none;"
+                href="https://rubika.ir/amirtbpedit"
+                target="_blank"
+            >
+                ورود به روبیکا
+            </a>
 
             <button
-                class="submit"
+                class="btn close-btn"
                 onclick="closeModal('supportModal')"
             >
                 بستن
@@ -2558,312 +1948,342 @@ footer strong{
         </div>
 
     </div>
-
 </div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <p>
-        امیر کیل | مسابقات کالاف
-    </p>
-
-
-    <p style="margin-top:8px;">
-
-        طراحی و توسعه توسط
-
-        <strong>
-            امیر حسین جبارفر
-        </strong>
-
-    </p>
-
-</footer>
 
 
 <script>
 
-/* ================= PARTICLES ================= */
+/* PARTICLES */
+for(let i=0;i<75;i++){
 
-const particles =
-    document.getElementById("particles");
+    const p=document.createElement('div');
 
+    p.className='particle';
 
-for(let i = 0; i < 75; i++){
+    p.style.left=Math.random()*100+'%';
 
-    const p =
-        document.createElement("span");
+    p.style.animationDuration=(5+Math.random()*10)+'s';
 
-    p.className =
-        "particle";
+    p.style.animationDelay=(-Math.random()*12)+'s';
 
-    p.style.left =
-        Math.random() * 100 + "%";
+    p.style.opacity=.3+Math.random()*.7;
 
-    p.style.animationDuration =
-        (5 + Math.random() * 9) + "s";
-
-    p.style.animationDelay =
-        (-Math.random() * 12) + "s";
-
-    const size =
-        1 + Math.random() * 3;
-
-    p.style.width =
-        size + "px";
-
-    p.style.height =
-        size + "px";
-
-    particles.appendChild(p);
+    document.body.appendChild(p);
 }
 
 
-/* ================= PAGE NAVIGATION ================= */
+/* PAGE */
+function showPage(page){
 
-function showPage(pageId, button){
-
-    document
-        .querySelectorAll(".page")
-        .forEach(page => {
-
-            page.classList.remove("active");
-
-        });
-
-
-    const page =
-        document.getElementById(pageId);
-
-
-    if(page){
-
-        page.classList.add("active");
-
-    }
-
-
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(btn => {
-
-            btn.classList.remove("active");
-
-        });
-
-
-    if(button){
-
-        button.classList.add("active");
-
-    }else{
-
-        document
-            .querySelectorAll(".nav-btn")
-            .forEach(btn => {
-
-                if(
-                    pageId === "home" &&
-                    btn.innerText.includes("خانه")
-                ){
-
-                    btn.classList.add("active");
-
-                }
-
-
-                if(
-                    pageId === "room" &&
-                    btn.innerText.includes("اطلاعات روم")
-                ){
-
-                    btn.classList.add("active");
-
-                }
-
-            });
-
-    }
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
+    document.querySelectorAll('.page').forEach(p=>{
+        p.classList.remove('active');
     });
 
+    const target=document.getElementById(page);
+
+    if(target){
+        target.classList.add('active');
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        });
+    }
 }
 
 
-/* ================= SUPPORT ================= */
+/* ROOM DATA */
+const roomData={
 
+    "1":{
+        title:"مولتی مچ 1",
+        price:"۳۰,۰۰۰ تومان",
+        gun:"فقط اسنایپ",
+        prize:"۶۰,۰۰۰ تومان برای ۲ نفر"
+    },
+
+    "2":{
+        title:"مولتی مچ 2",
+        price:"۳۰,۰۰۰ تومان",
+        gun:"فقط اسنایپ",
+        prize:"۶۰,۰۰۰ تومان برای ۲ نفر"
+    },
+
+    "3":{
+        title:"مولتی مچ 3",
+        price:"۳۰,۰۰۰ تومان",
+        gun:"فقط اسنایپ",
+        prize:"۶۰,۰۰۰ تومان برای ۲ نفر"
+    },
+
+    "4":{
+        title:"مولتی مچ 4",
+        price:"۳۰,۰۰۰ تومان",
+        gun:"فقط اسنایپ",
+        prize:"۶۰,۰۰۰ تومان برای ۲ نفر"
+    },
+
+    "5":{
+        title:"مولتی مچ 5",
+        price:"۵۰,۰۰۰ تومان",
+        gun:"گان آزاد",
+        prize:"۶۰,۰۰۰ تومان برای ۲ نفر"
+    }
+
+};
+
+let currentRoom="1";
+
+
+/* OPEN ROOM */
+function openRoom(room){
+
+    currentRoom=room;
+
+    const data=roomData[room];
+
+    document.getElementById('roomTitle').textContent=data.title;
+
+    document.getElementById('roomSubtitle').textContent=
+        `مولتی مچ ${room} • ${data.gun}`;
+
+    document.getElementById('roomPrice').textContent=data.price;
+
+    document.getElementById('roomPrize').textContent=data.prize;
+
+
+    const sniperRules=`
+فقط اسنایپ ولا غیر: مود سرچ اند دیستروی، استفاده از اسنایپ‌های نیمه اتوماتیک (رگباری) از جمله (XPR 50, M21 EBR, SVD) و اسنایپ‌های خشاب بمبی از جمله (NA 45, Rytec AMR) ممنوع می‌باشد. استفاده از هرگونه آیتم پرتابی (نید، فلش، اسموک، سنسور، استیم شات و…) ممنوع می‌باشد. موارد بن (ممنوع) در بازی استفاده از این موارد باعث عدم دریافت جایزه و جریمه می‌شود:
+
+سنسورها: (Heartbeat sensor) (trip sensor)
+
+دسته پرک‌ها: پرک قرمز مارتیدوم (martydom)، پرک قرمز اورکلاک (Overclock)، پرک آبی پرسیسنس (Persistence)، پرک آبی هاردلاین (Hardline)، پرک آبی یونیت ساپورت (Unit Support)
+
+اتچمنت‌ها: خشاب ترمایت (thermite) روی همه گان‌ها، خشاب دراگون برد (Dragon’s Breath)
+
+بعد از تموم شدن مچ از کاستوم لفت ندین اگر لفت بدین آمار تون نمیافته و جایزه بهتون تعلق نمیگیره.
+`;
+
+    const freeGunRules=`
+مود سرچ اند دیستروی، استفاده از هرگونه آیتم پرتابی (نید، فلش، اسموک، سنسور، استیم شات و…) ممنوع می‌باشد. موارد بن (ممنوع) در بازی استفاده از این موارد باعث عدم دریافت جایزه و جریمه می‌شود:
+
+سنسورها: (Heartbeat sensor) (trip sensor)
+
+دسته پرک‌ها: پرک قرمز مارتیدوم (martydom)، پرک قرمز اورکلاک (Overclock)، پرک آبی پرسیسنس (Persistence)، پرک آبی هاردلاین (Hardline)، پرک آبی یونیت ساپورت (Unit Support)
+
+اتچمنت‌ها: خشاب ترمایت (thermite) روی همه گان‌ها، خشاب دراگون برد (Dragon’s Breath)
+
+بعد از تموم شدن مچ از کاستوم لفت ندین اگر لفت بدین آمار تون نمیافته و جایزه بهتون تعلق نمیگیره.
+`;
+
+    document.getElementById('rulesText').textContent=
+        room==="5" ? freeGunRules : sniperRules;
+
+    showPage('rooms');
+}
+
+
+/* REGISTER */
+function openRegister(room){
+
+    currentRoom=room;
+
+    const data=roomData[room];
+
+    document.getElementById('registerDescription').textContent=
+        `ثبت‌نام ${data.title} با ورودی ${data.price}`;
+
+    document.getElementById('playerName').value="";
+
+    document.getElementById('registerModal').classList.add('show');
+
+    setTimeout(()=>{
+        document.getElementById('playerName').focus();
+    },200);
+}
+
+
+/* SUBMIT REGISTRATION */
+function submitRegistration(){
+
+    const input=document.getElementById('playerName');
+
+    const name=input.value.trim();
+
+    if(!name){
+
+        input.focus();
+
+        input.style.borderColor="#ff005d";
+
+        setTimeout(()=>{
+            input.style.borderColor="";
+        },1000);
+
+        return;
+    }
+
+    const data=roomData[currentRoom];
+
+    localStorage.setItem(
+        'amirKillPlayerName',
+        name
+    );
+
+    localStorage.setItem(
+        'amirKillSelectedRoom',
+        currentRoom
+    );
+
+    closeModal('registerModal');
+
+    document.getElementById('successText').innerHTML=
+        `نام <strong style="color:#00eaff">${escapeHTML(name)}</strong>
+        برای <strong>${data.title}</strong> ثبت شد.
+        <br><br>
+        مبلغ ورود: <strong>${data.price}</strong>`;
+
+    document.getElementById('successModal').classList.add('show');
+}
+
+
+/* BUY CP */
+function buyCP(product){
+
+    document.getElementById('successText').innerHTML=
+        `محصول انتخاب‌شده:
+        <br>
+        <strong style="color:#00eaff">${escapeHTML(product)}</strong>
+        <br><br>
+        برای ثبت سفارش، پرداخت و ارسال رسید،
+        به روبیکا
+        <strong style="color:#00eaff">@amirtbpedit</strong>
+        پیام دهید.`;
+
+    document.getElementById('successModal').classList.add('show');
+}
+
+
+/* SUPPORT */
 function openSupport(){
 
-    document
-        .getElementById("supportModal")
-        .classList.add("show");
-
+    document.getElementById('supportModal').classList.add('show');
 }
 
 
-/* ================= CLOSE MODAL ================= */
-
+/* CLOSE MODAL */
 function closeModal(id){
 
-    document
-        .getElementById(id)
-        .classList.remove("show");
-
+    document.getElementById(id).classList.remove('show');
 }
 
 
-/* ================= CLICK OUTSIDE ================= */
+/* ESCAPE */
+function escapeHTML(text){
 
-document
-    .querySelectorAll(".modal")
-    .forEach(modal => {
+    const div=document.createElement('div');
 
-        modal.addEventListener(
-            "click",
-            function(e){
+    div.textContent=text;
 
-                if(e.target === modal){
-
-                    modal.classList.remove("show");
-
-                }
-
-            }
-        );
-
-    });
+    return div.innerHTML;
+}
 
 
-/* ================= COUNTDOWN ================= */
-
-const matchDate =
-    new Date(
-        "2026-09-18T18:30:00+03:30"
-    ).getTime();
-
+/* COUNTDOWN */
+const targetDate=new Date(
+    "2026-09-18T18:30:00+03:30"
+).getTime();
 
 function updateCountdown(){
 
-    const now =
-        new Date().getTime();
+    const now=new Date().getTime();
 
+    const distance=targetDate-now;
 
-    const difference =
-        matchDate - now;
+    const el=document.getElementById('countdown');
 
+    if(distance<=0){
 
-    if(difference <= 0){
-
-        document
-            .getElementById("days")
-            .innerText = "۰";
-
-        document
-            .getElementById("hours")
-            .innerText = "۰";
-
-        document
-            .getElementById("minutes")
-            .innerText = "۰";
-
-        document
-            .getElementById("seconds")
-            .innerText = "۰";
+        el.textContent="مسابقه شروع شده است";
 
         return;
-
     }
 
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (
-                difference /
-                (1000 * 60 * 60)
-            ) % 24
-        );
-
-
-    const minutes =
-        Math.floor(
-            (
-                difference /
-                (1000 * 60)
-            ) % 60
-        );
-
-
-    const seconds =
-        Math.floor(
-            (
-                difference /
-                1000
-            ) % 60
-        );
-
-
-    document
-        .getElementById("days")
-        .innerText =
-        toPersianNumber(days);
-
-
-    document
-        .getElementById("hours")
-        .innerText =
-        toPersianNumber(hours);
-
-
-    document
-        .getElementById("minutes")
-        .innerText =
-        toPersianNumber(minutes);
-
-
-    document
-        .getElementById("seconds")
-        .innerText =
-        toPersianNumber(seconds);
-
-}
-
-
-function toPersianNumber(number){
-
-    return String(number).replace(
-        /\d/g,
-        d => "۰۱۲۳۴۵۶۷۸۹"[d]
+    const days=Math.floor(
+        distance/(1000*60*60*24)
     );
 
+    const hours=Math.floor(
+        (distance%(1000*60*60*24))/(1000*60*60)
+    );
+
+    const minutes=Math.floor(
+        (distance%(1000*60*60))/(1000*60)
+    );
+
+    const seconds=Math.floor(
+        (distance%(1000*60))/1000
+    );
+
+    el.textContent=
+        `${days} روز • ${hours} ساعت • ${minutes} دقیقه • ${seconds} ثانیه`;
 }
 
+setInterval(updateCountdown,1000);
 
 updateCountdown();
 
-setInterval(
-    updateCountdown,
-    1000
-);
+
+/* RIPPLE */
+document.addEventListener('click',function(e){
+
+    const button=e.target.closest('button');
+
+    if(!button)return;
+
+    const r=document.createElement('div');
+
+    r.className='ripple';
+
+    r.style.left=e.clientX+'px';
+
+    r.style.top=e.clientY+'px';
+
+    document.body.appendChild(r);
+
+    setTimeout(()=>{
+        r.remove();
+    },700);
+});
+
+
+/* CLICK OUTSIDE MODAL */
+document.querySelectorAll('.modal').forEach(modal=>{
+
+    modal.addEventListener('click',function(e){
+
+        if(e.target===modal){
+            modal.classList.remove('show');
+        }
+
+    });
+
+});
+
+
+/* ESC KEY */
+document.addEventListener('keydown',function(e){
+
+    if(e.key==="Escape"){
+
+        document.querySelectorAll('.modal').forEach(modal=>{
+            modal.classList.remove('show');
+        });
+
+    }
+
+});
 
 </script>
 
 </body>
 </html>
-```
