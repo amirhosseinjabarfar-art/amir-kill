@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -2484,7 +2485,7 @@ footer strong{
 
             <button
                 class="main-button"
-                onclick="openRegister()"
+                onclick="window.location.href='https://baserow.io/form/wdEi5yLUBaweWsGbktsF-nW8_BPTQDz9x5V5n3uOnno'"
             >
                 ثبت اسم مسابقه 🚀
             </button>
@@ -2494,152 +2495,6 @@ footer strong{
     </div>
 
 </section>
-
-
-<!-- ================= REGISTER MODAL ================= -->
-
-<div
-    class="modal"
-    id="registerModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h2>
-                ثبت اسم مسابقه
-            </h2>
-
-
-            <button
-                class="close"
-                onclick="closeModal('registerModal')"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="registerForm">
-
-
-            <div class="form-group">
-
-                <label>
-                    اسم دقیق داخل بازی Call of Duty
-                </label>
-
-
-                <input
-                    id="codName"
-                    type="text"
-                    placeholder="اسم دقیق داخل بازی را وارد کنید"
-                    required
-                >
-
-            </div>
-
-
-            <div class="receipt-notice">
-
-                <strong>
-                    ⚠️ حتماً توجه کنید
-                </strong>
-
-                بعد از واریز هزینه مسابقه،
-                <b>
-                    رسید واریزی را در روبیکا برای @amirtbpedit
-                </b>
-                ارسال کنید.
-
-                <br>
-
-                بدون ارسال رسید،
-                <b>
-                    اینویت روم داده نمی‌شود.
-                </b>
-
-            </div>
-
-
-            <button
-                class="submit"
-                type="submit"
-            >
-                ثبت اسم
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- ================= SUCCESS MODAL ================= -->
-
-<div
-    class="modal"
-    id="successModal"
->
-
-    <div class="modal-box">
-
-        <div class="success-content">
-
-
-            <div class="success-icon">
-                ✓
-            </div>
-
-
-            <h2>
-                اسم شما ثبت شد!
-            </h2>
-
-
-            <p>
-
-                اسم شما برای مسابقه ثبت شد.
-
-                <br><br>
-
-                حالا حتماً رسید واریزی خود را
-                در روبیکا برای آیدی زیر ارسال کنید:
-
-            </p>
-
-
-            <div class="rubika">
-                @amirtbpedit
-            </div>
-
-
-            <p style="color:#ff668f;font-weight:800;">
-
-                ⚠️ بدون ارسال رسید واریزی،
-                اینویت روم برای شما ارسال نمی‌شود.
-
-            </p>
-
-
-            <br>
-
-
-            <button
-                class="submit"
-                onclick="closeModal('successModal')"
-            >
-                متوجه شدم
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
 
 
 <!-- ================= SUPPORT ================= -->
@@ -2845,17 +2700,6 @@ function showPage(pageId, button){
 }
 
 
-/* ================= REGISTER ================= */
-
-function openRegister(){
-
-    document
-        .getElementById("registerModal")
-        .classList.add("show");
-
-}
-
-
 /* ================= SUPPORT ================= */
 
 function openSupport(){
@@ -2898,58 +2742,6 @@ document
         );
 
     });
-
-
-/* ================= REGISTER FORM ================= */
-
-document
-    .getElementById("registerForm")
-    .addEventListener(
-        "submit",
-        function(e){
-
-            e.preventDefault();
-
-
-            const codName =
-                document
-                .getElementById("codName")
-                .value
-                .trim();
-
-
-            if(!codName){
-
-                return;
-
-            }
-
-
-            /*
-                فقط اسم بازی ذخیره می‌شود.
-                ارسال رسید باید در روبیکا انجام شود.
-            */
-
-            localStorage.setItem(
-                "amirKillPlayerName",
-                codName
-            );
-
-
-            document
-                .getElementById("registerForm")
-                .reset();
-
-
-            closeModal("registerModal");
-
-
-            document
-                .getElementById("successModal")
-                .classList.add("show");
-
-        }
-    );
 
 
 /* ================= COUNTDOWN ================= */
@@ -3074,3 +2866,4 @@ setInterval(
 
 </body>
 </html>
+```
